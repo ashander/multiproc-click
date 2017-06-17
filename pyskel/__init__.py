@@ -11,8 +11,7 @@ class Simulation(object):
         self.pd = None
 
 
-def mod_run(sim_p_tuple):
-    sim, p = sim_p_tuple
+def mod_run(sim, p):
     _, p2 = sim.pars
     sim.pars = p, p2
     return run(sim)

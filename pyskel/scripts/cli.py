@@ -19,7 +19,7 @@ def cli(ctx, count):
 @click.option('--p1-val', type=float)
 @click.pass_obj
 def run(sim, p1_val):
-    pyskel.mod_run((sim, p1_val))
+    pyskel.mod_run(sim, p1_val)
 
 
 @cli.command()
@@ -31,5 +31,5 @@ def run_several_par1(sim, p1_range):
     p1_vals = list(range(first, last, step))
 
     pool = multiprocessing.Pool(3)
-    res = pool.map(pyskel.mod_run, ((sim, p) for p in p1_vals))
+    res = pool.starmap(pyskel.mod_run, ((sim, p) for p in p1_vals))
     print(res)
